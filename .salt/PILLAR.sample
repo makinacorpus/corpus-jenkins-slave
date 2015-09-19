@@ -1,4 +1,3 @@
-#
 # This file contains default values which are used
 # by the salt states deploying your project.
 # you may copy them to your relevant PILLAR file
@@ -11,21 +10,22 @@
 # the current projectname
 # you can also merge parts of this file
 # with the relevant pillar
-#
-# think that dicts are updated/merged with default
-# but lists are overidden
+
+# makina-states mysql configuration (copy in your pillar,
+#                                    uncomment and edit)
+# makina-states.services.db.mysql.available_mem: 1500
+# corpus mysql project configuration
+
+{% set files="salt://makina-projects/{name}/files" %}
 makina-projects.projectname:
   data:
-    opt: value
-    password: SecretToBeChangedInsidePillar
-  env_defaults:
-    dev:
-      opt: value2
-  os_defaults:
-    Ubuntu:
-# os  filter
-      opt: value1
-    Debian:
-# os familly filter
-      opt1: value11
+    domain: '{fqdn}'
+    server_aliases: []
+    builds: "{data_root}/builds"
+    configs: {}
+    sshkeys: []
+    # http_users:
+    #   - root: foo
+    # users:
+    #   - foo: {password: 123}
 # vim:set ft=sls:
