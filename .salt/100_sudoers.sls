@@ -4,6 +4,7 @@
 {{cfg.name}}-jenkins:
   user.present:
     - name: jenkins
+    - shell: /bin/bash
     - remove_groups: False
     - groups:
       - sshusers
@@ -14,7 +15,6 @@
     - user: root
     - group: root
     - createhome: true
-    - shell: /bin/bash
     - contents: |
                 jenkins ALL=(ALL) NOPASSWD: ALL
   cmd.run:
